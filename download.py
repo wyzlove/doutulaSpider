@@ -15,7 +15,7 @@ class Download:
         html_res= get_header.get(group_html,3).text
         group_name=re.findall(r'<meta property="og:title" content="(.*?)"/>',html_res)[0].strip()
         self.makedir(group_name)
-        os.chdir(os.path.join(r"C:\Users\94481\Desktop\doutula\斗图啦", group_name))
+        os.chdir(os.path.join(r"C:\Users\94481\Desktop\斗图啦", group_name))
         for i in re.findall(r'alt=(.*?) onerror="this.src=(.*?)">', html_res):
             img_url= "https:"+re.sub(r"'",'',i[1]) #去首尾引号
             img_name= re.sub(r"'",'',i[0]).strip('"')
@@ -35,12 +35,12 @@ class Download:
             self.get_img_html(html)
 
     def makedir(self,path):
-        os.chdir(r"C:\Users\94481\Desktop\doutula\斗图啦")
-        isExist=os.path.exists(os.path.join(r"C:\Users\94481\Desktop\doutula\斗图啦",path))
+        os.chdir(r"C:\Users\94481\Desktop\斗图啦")
+        isExist=os.path.exists(os.path.join(r"C:\Users\94481\Desktop\斗图啦",path))
         if not isExist:
             print("*****************"+'开始新建文件夹'+path+"********************")
-            os.makedirs(os.path.join(r"C:\Users\94481\Desktop\doutula\斗图啦",path))
-            os.chdir(r"C:\Users\94481\Desktop\doutula\斗图啦")
+            os.makedirs(os.path.join(r"C:\Users\94481\Desktop\斗图啦",path))
+            os.chdir(r"C:\Users\94481\Desktop\斗图啦")
             return True
         else:
             print( path+'该文件夹已存在')
